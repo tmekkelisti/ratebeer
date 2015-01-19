@@ -3,11 +3,7 @@ class Beer < ActiveRecord::Base
   has_many :ratings
 
   def average_rating
-    ratingit = self.ratings
-    scoret = 0
-    scoret << ratingit.each do |beer|
-      puts beer.score
-    end
+    return self.ratings.average(:score).to_s
   end
 
 end
