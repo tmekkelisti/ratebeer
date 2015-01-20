@@ -1,10 +1,12 @@
 class Brewery < ActiveRecord::Base
   has_many :beers, dependent: :destroy
   has_many :ratings, through: :beers
+  include RatingAverage
 
-  def average_rating
-    return self.ratings.average(:score).to_s
-  end
+
+  #def average_rating
+  #  return self.ratings.average(:score).to_s
+  #end
 
 
 end
