@@ -23,7 +23,7 @@
 
   <% if not current_user.nil? %>
       <%= link_to current_user.username, user_path(current_user) %>
-      <%= link_to 'rate a beer', ratings_path %>
+      <%= link_to 'rate a beer', new_rating_path %>
       <%= link_to 'signout', signout_path , :method=>:delete %>
   <% end %>
 

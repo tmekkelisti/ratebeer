@@ -12,8 +12,8 @@
 <% if not @user.ratings.empty? %>
   <p>Ratings: </p>
     <ul>
-      <%= @ratings.each do |rating| %>
-          <li><%= rating %></li>
+      <% @user.ratings.each do |rating| %>
+          <li><%= rating %> <%= link_to 'delete', rating, method: :delete, data: { confirm: 'Are you sure?'} %></li>
       <% end %>
     </ul>
 
