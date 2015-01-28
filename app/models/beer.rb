@@ -3,6 +3,7 @@ class Beer < ActiveRecord::Base
   has_many :ratings, dependent: :destroy
   include RatingAverage
 
+
   #def average_rating
   #  return self.ratings.average(:score).to_s
   #end
