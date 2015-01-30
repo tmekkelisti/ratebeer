@@ -9,6 +9,17 @@
 <% end %>
 </br>
 
+
+    <p>Membership with: </p>
+    <ul>
+      <% @user.memberships.each do |membership| %>
+          <li><%= membership %></li>
+          <li><%= link_to membership %></li>
+      <% end %>
+    </ul>
+
+
+
 <% if not @user.ratings.empty? %>
   <p>Ratings: </p>
     <ul>
