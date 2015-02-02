@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   include RatingAverage
   validates :username, uniqueness: true
   validates :username, length: {minimum: 3, maximum: 15}
-  validates :password_digest, length: {minimum: 4}
-  #validates_format_of :password_digest =>
+  validates :password, length: {minimum: 4}
+  validates :password, format: { with: /\d.*[A-Z]|[A-Z].*\d/,  message: "has to contain one number and one upper case letter" }
 
 end
