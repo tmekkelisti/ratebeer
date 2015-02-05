@@ -5,6 +5,7 @@ class Beer < ActiveRecord::Base
   include RatingAverage
 
   validates :name, presence: true
+  validates :style, presence: true
 
   #def average_rating
   #  return self.ratings.average(:score).to_s
