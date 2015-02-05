@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/mluukkai/ratebeer-public.png)](https://travis-ci.org/tmekkelisti/ratebeer)
+[![Build Status](https://travis-ci.org/tmekkelisti/ratebeer.png)](https://travis-ci.org/tmekkelisti/ratebeer)
 
 
 ==README
