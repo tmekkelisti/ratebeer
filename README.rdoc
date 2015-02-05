@@ -1,3 +1,0 @@
-== README
-
-https://vast-eyrie-1888.herokuapp.com/beers
