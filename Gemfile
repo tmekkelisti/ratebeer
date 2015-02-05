@@ -71,3 +71,6 @@ group :test do
   gem 'capybara'
   gem 'launchy'
 end
+
+gem 'rspec-its'
+gem 'simplecov', require: false
