@@ -17,4 +17,5 @@ class User < ActiveRecord::Base
     #ratings.sort_by(&:score).last.beer
   end
 
+
 end
