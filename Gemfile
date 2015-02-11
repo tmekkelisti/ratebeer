@@ -62,15 +62,16 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 end
 
-group :test do
-  gem 'factory_girl_rails'
-end
 
 group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'launchy'
+  gem 'webmock'
 end
 
 gem 'rspec-its'
 gem 'simplecov', require: false
+
+gem 'httparty'
+
