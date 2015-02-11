@@ -21,7 +21,7 @@ class BeermappingApi
   end
 
   def self.key
-    raise "APIKEY env variable not defined" if ENV['APIKEY'].nil?
+    #raise "APIKEY env variable not defined" if ENV['APIKEY'].nil?
     ENV['APIKEY']
   end
 end
