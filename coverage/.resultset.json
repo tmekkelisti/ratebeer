@@ -70,7 +70,8 @@
         null,
         null,
         1,
-        null,
+        0,
+        0,
         null,
         null,
         null,
@@ -467,6 +468,8 @@
         null,
         null,
         1,
+        0,
+        0,
         null,
         null,
         null,
@@ -634,7 +637,16 @@
         null,
         null,
         1,
-        3,
+        0,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        null,
+        1,
+        null,
         3,
         null,
         null
@@ -647,9 +659,16 @@
         1,
         5,
         null,
+        null,
+        1,
+        13,
+        146,
+        null,
+        null,
+        null,
         null
       ],
-      "/home/tme/Documents/ratebeer/app/controllers/concerns/places_controller.rb": [
+      "/home/tme/Documents/ratebeer/app/controllers/places_controller.rb": [
         1,
         1,
         null,
@@ -662,6 +681,10 @@
         2,
         null,
         null,
+        null,
+        null,
+        1,
+        0,
         null,
         null,
         null
@@ -699,6 +722,6 @@
         null
       ]
     },
-    "timestamp": 1423664698
+    "timestamp": 1423836577
   }
 }

@@ -30,9 +30,11 @@ class MembershipsController < ApplicationController
     @membership = Membership.new params.require(:membership).permit(:beer_club_id)
     @membership.user_id = current_user.id
 
+
     if @membership.save
       @membership.beer_club_id = :beer_club_id
-      redirect_to user_path current_user
+      byebug
+      redirect_to beer_clubs_path(@beer_club), notice: "#{current_user.username}, welcome to the club!"
     else
       @membership = Membership.new
       @clubs = BeerClub.all

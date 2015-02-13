@@ -12,4 +12,8 @@ class PlacesController < ApplicationController
 
   end
 
+  def show
+    @place = BeermappingApi.place(params[:id])
+  end
+
 end
