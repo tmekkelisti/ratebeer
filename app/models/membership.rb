@@ -20,4 +20,5 @@ class Membership < ActiveRecord::Base
     return beer_club.id
   end
 
+
 end
