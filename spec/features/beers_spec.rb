@@ -3,6 +3,7 @@ require 'rails_helper'
 describe 'Beer' do
 
   before :each do
+    FactoryGirl.create :style
     FactoryGirl.create :user
     sign_in(username:"Pekka", password:"Foobar1")
   end
