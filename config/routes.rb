@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :styles
 
   resources :memberships
-  delete '/memberships', to: 'memberships#destroy'
+  #delete '/memberships', to: 'memberships#destroy'
 
   resources :beer_clubs
 
