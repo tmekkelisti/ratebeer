@@ -2,7 +2,7 @@
 
 <h1><%= @user.username %></h1>
 
-<% if current_user.admin && @user.penalty%>
+<% if current_user && current_user.admin && @user.penalty%>
         <span class="label label-info">account frozen</span>
 <% end %>
 <br/>
@@ -36,7 +36,7 @@
 
 <% end %>
 
-<% if current_user.admin%>
+<% if current_user && current_user.admin%>
     <% if @user.penalty %>
         <%= link_to "unfreeze account", toggle_penalty_user_path(@user.id), method: :post, class: "btn btn-primary" %>
     <% else %>
