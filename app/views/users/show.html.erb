@@ -1,7 +1,11 @@
-<p id="notice"><%= notice %></p>
+
 
 <h1><%= @user.username %></h1>
 
+<% if current_user.admin && @user.penalty%>
+        <span class="label label-info">account frozen</span>
+<% end %>
+<br/>
 <% if @user.ratings.empty? %>
     hasn't rated anything!
 <% else %>
@@ -30,6 +34,14 @@
       <% end %>
     </ul>
 
+<% end %>
+
+<% if current_user.admin%>
+    <% if @user.penalty %>
+        <%= link_to "unfreeze account", toggle_penalty_user_path(@user.id), method: :post, class: "btn btn-primary" %>
+    <% else %>
+        <%= link_to "freeze account", toggle_penalty_user_path(@user.id), method: :post, class: "btn btn-primary" %>
+    <% end %>
 <% end %>
 
 <% if @user == current_user %>
