@@ -1,12 +1,36 @@
 <h2>List of ratings</h2>
 
-<p>Number of ratings: <%= @ratings.count %></p>
 
-<ul>
-  <% @ratings.each do |rating| %>
-      <li> <%= rating %> <%= link_to rating.user.username, rating.user %></li>
-  <% end %>
-</ul>
+
+
+
+<div class="row">
+  <div class="col-md-4">
+    <%= render 'listTop3', top: @top3_beers, type: "Beers" %>
+  </div>
+  <div class="col-md-4">
+    <%= render 'listTop3', top: @top3_breweries , type: "Breweries"%>
+  </div>
+  <div class="col-md-4">
+    <%= render 'listTop3', top: @top3_styles, type: "Styles" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= render 'mostActiveUsers', users: @top3_raters %>
+  </div>
+
+</div>
+
+<h3>Latest Ratings</h3>
+<div class="row">
+  <ul>
+    <% @recent_ratings.each do |rating| %>
+        <li> <%= rating %> <%= link_to rating.user.username, rating.user %></li>
+    <% end %>
+  </ul>
+</div>
 
 
 

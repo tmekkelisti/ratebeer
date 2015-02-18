@@ -1,0 +1,26 @@
+<h3>Most Active Users</h3>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th></th>
+    <th>favorite beer</th>
+    <th>preferred style</th>
+    <th>favorite brewery</th>
+    <th>ratings</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% users.each do |user| %>
+      <tr>
+        <td><%= link_to user.username, user %></td>
+        <td><%= link_to user.favorite_beer, user.favorite_beer %></td>
+        <td><%= link_to user.favorite_style, user.favorite_style %></td>
+        <td><%= link_to user.favorite_brewery, user.favorite_brewery %></td>
+        <td><%= user.ratings.count %></td>
+
+        <td></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
