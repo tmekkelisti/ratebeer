@@ -9,6 +9,6 @@ module ApplicationHelper
   end
 
   def round(param)
-    number_with_precision(param, precision: 2)
+    number_with_precision(param, precision: 1)
   end
 end
