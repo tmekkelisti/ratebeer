@@ -36,6 +36,9 @@ Rails.application.routes.draw do
   resources :ratings, only: [:index, :new, :create, :destroy]
 
 
+  get 'beerlist', to:'beers#list'
+  get 'ngbeerlist', to:'beers#nglist'
+  get 'brewerylist', to:'breweries#nglist'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

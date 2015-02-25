@@ -1,13 +1,50 @@
 class BreweriesController < ApplicationController
   before_action :set_brewery, only: [:show, :edit, :update, :destroy]
-  before_action :ensure_that_signed_in, except: [:index, :show]
+  before_action :ensure_that_signed_in, except: [:index, :show, :nglist]
   before_action :ensure_that_admin_signed_in, only: [:destroy]
 
   # GET /breweries
   # GET /breweries.json
   def index
+    @breweries = Brewery.all
     @active_breweries = Brewery.active
     @retired_breweries = Brewery.retired
+
+    order = params[:order] || 'name'
+
+    if order == 'name'
+      if session[:last_order] == 'name'
+        @active_breweries = @active_breweries.sort_by{ |b| b.name }.reverse!
+        @retired_breweries = @retired_breweries.sort_by{ |b| b.name }.reverse!
+        session[:last_order] = nil
+      else
+        @active_breweries = @active_breweries.sort_by{ |b| b.name }
+        @retired_breweries = @retired_breweries.sort_by{ |b| b.name }
+        session[:last_order] = 'name'
+      end
+
+    elsif order == 'year'
+      if session[:last_order] == 'year'
+        @active_breweries = @active_breweries.sort_by{ |b| b.year }.reverse!
+        @retired_breweries = @retired_breweries.sort_by{ |b| b.year }.reverse!
+        session[:last_order] = nil
+      else
+        @active_breweries = @active_breweries.sort_by{ |b| b.year }
+        @retired_breweries = @retired_breweries.sort_by{ |b| b.year }
+        session[:last_order] = 'year'
+      end
+
+    end
+
+    # @active_breweries = case order
+    #            when 'name' then @active_breweries.sort_by{ |b| b.name }
+    #            when 'year' then @active_breweries.sort_by{ |b| b.year }
+    #          end
+    # @retired_breweries = case order
+    #             when 'name' then @retired_breweries.sort_by{ |b| b.name }
+    #             when 'year' then @retired_breweries.sort_by{ |b| b.year }
+    #          end
+
   end
 
   # GET /breweries/1
@@ -71,6 +108,9 @@ class BreweriesController < ApplicationController
     new_status = brewery.active? ? "active" : "retired"
 
     redirect_to :back, notice:"brewery activity status changed to #{new_status}"
+  end
+
+  def nglist
   end
 
   private

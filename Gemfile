@@ -74,6 +74,9 @@ gem 'rspec-its'
 gem 'simplecov', require: false
 
 gem 'httparty'
+gem 'jquery-turbolinks'
+gem 'selenium-webdriver'
+gem 'database_cleaner'
 
 gem 'bootstrap-sass'
 group :development do
