@@ -1,14 +1,18 @@
-<h2> <%= @beer %> </h2>
 
-<p>
-  <strong>Style:</strong>
-  <%= @beer.style %>
-</p>
 
-<% if @beer.ratings.empty? %>
-    <p>beer has not yet been rated!</p>
-<% else %>
-    <p>has been rated <%= @beer.ratings.count %> times, average score <%= round(@beer.average_rating) %></p>
+<% cache @beer do %>
+    <h2> <%= @beer %> </h2>
+
+    <p>
+      <strong>Style:</strong>
+      <%= @beer.style %>
+    </p>
+
+    <% if @beer.ratings.empty? %>
+        <p>beer has not yet been rated!</p>
+    <% else %>
+        <p>has been rated <%= @beer.ratings.count %> times, average score <%= round(@beer.average_rating) %></p>
+    <% end %>
 <% end %>
 
 <% if current_user %>
@@ -20,7 +24,7 @@
         score: <%= f.number_field :score %>
         <%= f.submit %>
     <% end %>
-
-    <%= link_to 'Edit', edit_beer_path(@beer) %>
+    <br/>
+    <%= edit_and_destroy_buttons(@beer) %>
 
 <% end %>

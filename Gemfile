@@ -77,6 +77,7 @@ gem 'httparty'
 gem 'jquery-turbolinks'
 gem 'selenium-webdriver'
 gem 'database_cleaner'
+gem 'rack-mini-profiler'
 
 gem 'bootstrap-sass'
 group :development do

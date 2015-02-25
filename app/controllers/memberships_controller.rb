@@ -33,7 +33,7 @@ class MembershipsController < ApplicationController
 
     if @membership.save
       @membership.beer_club_id = :beer_club_id
-      redirect_to beer_clubs_path(@beer_club), notice: "#{current_user.username}, welcome to the club!"
+      redirect_to beer_clubs_path(@beer_club), notice: "#{current_user.username}, your application to the club is applied!"
     else
       @membership = Membership.new
       @clubs = BeerClub.all
@@ -77,6 +77,14 @@ class MembershipsController < ApplicationController
       format.html { redirect_to user_path(current_user), notice: "Membership in #{name} ended" }
       format.json { head :no_content }
     end
+  end
+
+  def confirm_member
+    membership = Membership.find(params[:id])
+    membership.update_attribute(:confirmed, true)
+
+    redirect_to :back, notice:"#{membership.member} confirmed to the club!"
+
   end
 
   private

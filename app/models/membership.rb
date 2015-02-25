@@ -6,7 +6,8 @@ class Membership < ActiveRecord::Base
     #return self.beer_club.to_s
   #end
 
-
+  scope :confirmed, -> { where confirmed:true }
+  scope :not_confirmed, -> { where confirmed: [nil,false]}
 
   def member
     return user.username

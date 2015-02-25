@@ -1,26 +1,26 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @beer_club.name %>
-</p>
+<h2><%= @beer_club.name %>, <%= @beer_club.city %></h2>
+<p>Founded <%= @beer_club.founded %></p>
 
-<p>
-  <strong>Founded:</strong>
-  <%= @beer_club.founded %>
-</p>
 
-<p>
-  <strong>City:</strong>
-  <%= @beer_club.city %>
-</p>
+<p>Members:</p>
+<% @beer_club.memberships.confirmed.each do |user| %>
+    <ul>
+        <li><%= link_to user.member, user.user %></li>
+    </ul>
+<% end %>
 
-<p>
-  <strong>Members:</strong>
-  <% @beer_club.memberships.each do |user| %>
-      <%= link_to user.member, user.user %>
-  <% end %>
-</p>
+<p>Outstanding applications:</p>
+<% @beer_club.memberships.not_confirmed.each do |user| %>
+    <ul>
+      <li><%= link_to user.member, user.user %>
+        <% if current_user_confirmed_member %>
+            <%= link_to 'confirm member', confirm_member_membership_path(user.id), method: :post, class: "btn btn-primary" %>
+        <% end %>
+      </li>
+    </ul>
+<% end %>
+<br/>
 
 <% if current_user and current_user_is_not_member%>
     <%= form_for(@membership) do |f| %>

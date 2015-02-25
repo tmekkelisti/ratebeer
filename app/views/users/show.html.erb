@@ -6,6 +6,12 @@
         <span class="label label-info">account frozen</span>
 <% end %>
 <br/>
+
+<p>Favorite beer: <%= @user.favorite_beer %></p>
+<p>Favorite brewery: <%= @user.favorite_brewery %></p>
+<p>Favorite style: <%= @user.favorite_style %></p>
+
+<br/>
 <% if @user.ratings.empty? %>
     hasn't rated anything!
 <% else %>
@@ -14,9 +20,16 @@
 </br>
 
 <% if not @user.memberships.empty? %>
+    <h2>Beer clubs</h2>
     <p>Membership with: </p>
     <ul>
-      <% @user.memberships.each do |membership| %>
+      <% @user.memberships.confirmed.each do |membership| %>
+          <li><%= link_to membership.name_of_beer_club, beer_club_path(:id => membership.bc_id) %></li>
+      <% end %>
+    </ul>
+    <p>Applied for: </p>
+    <ul>
+      <% @user.memberships.not_confirmed.each do |membership| %>
           <li><%= link_to membership.name_of_beer_club, beer_club_path(:id => membership.bc_id) %></li>
       <% end %>
     </ul>
@@ -24,7 +37,7 @@
 
 
 <% if not @user.ratings.empty? %>
-  <p>Ratings: </p>
+  <h2>Ratings</h2>
     <ul>
       <% @user.ratings.each do |rating| %>
           <li><%= rating %>

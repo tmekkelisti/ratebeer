@@ -37,7 +37,7 @@ class BeerClubsController < ApplicationController
   # POST /beer_clubs.json
   def create
     @beer_club = BeerClub.new(beer_club_params)
-
+    Membership.create!(beer_club:@beer_club, user:current_user, confirmed: true)
     respond_to do |format|
       if @beer_club.save
         format.html { redirect_to @beer_club, notice: 'Beer club was successfully created.' }
@@ -88,4 +88,8 @@ end
 
 def current_user_is_not_member
   Membership.where(beer_club_id: @beer_club, user_id: current_user).empty?
+end
+
+def current_user_confirmed_member
+  Membership.where(beer_club_id: @beer_club, user_id: current_user, confirmed: true).any?
 end

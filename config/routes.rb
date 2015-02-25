@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   resources :styles
 
-  resources :memberships
-  #delete '/memberships', to: 'memberships#destroy'
+  resources :memberships do
+    post 'confirm_member', on: :member
+  end
+
 
   resources :beer_clubs
 
